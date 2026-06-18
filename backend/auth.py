@@ -106,6 +106,9 @@ def _send_verification_email(to_email: str, code: str, username: str) -> bool:
             "Neither BREVO_API_KEY nor SMTP configured. "
             "Skipping email — code is: %s", code
         )
+        print("\n" + "="*60)
+        print(f"  [DEV MODE] KODE VERIFIKASI UNTUK {to_email}: {code}")
+        print("="*60 + "\n")
         return True  # Allow registration to proceed in dev mode
 
     try:
@@ -181,6 +184,9 @@ def _send_reset_email(to_email: str, code: str, username: str) -> bool:
     """Send reset password code via Brevo API or Gmail SMTP."""
     if not BREVO_API_KEY and (not SMTP_EMAIL or not SMTP_APP_PASSWORD):
         logger.warning("No email config. Skipping reset email — code is: %s", code)
+        print("\n" + "="*60)
+        print(f"  [DEV MODE] KODE RESET PASSWORD UNTUK {to_email}: {code}")
+        print("="*60 + "\n")
         return True
 
     try:

@@ -65,12 +65,7 @@ echo    Memeriksa file .env...
 if not exist "%BACKEND%\.env" (
     if exist "%BACKEND%\.env.example" (
         copy "%BACKEND%\.env.example" "%BACKEND%\.env" >nul
-        echo    [OK] backend\.env dibuat dari .env.example
-        echo    [!!] PENTING: Edit backend\.env dan isi kredensial yang benar!
-        echo         Buka file: %BACKEND%\.env
-        echo.
-        echo    Tekan tombol apa saja setelah selesai edit .env...
-        pause >nul
+        echo    [OK] backend\.env otomatis dibuat dari .env.example
     ) else (
         echo    [WARNING] backend\.env.example tidak ditemukan!
     )
