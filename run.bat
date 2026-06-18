@@ -58,6 +58,40 @@ if !ERRORLEVEL! NEQ 0 (
 echo.
 
 :: ------------------------------------------------------------
+::  STEP 1b: Cek dan buat file .env jika belum ada
+:: ------------------------------------------------------------
+echo    Memeriksa file .env...
+
+if not exist "%BACKEND%\.env" (
+    if exist "%BACKEND%\.env.example" (
+        copy "%BACKEND%\.env.example" "%BACKEND%\.env" >nul
+        echo    [OK] backend\.env dibuat dari .env.example
+        echo    [!!] PENTING: Edit backend\.env dan isi kredensial yang benar!
+        echo         Buka file: %BACKEND%\.env
+        echo.
+        echo    Tekan tombol apa saja setelah selesai edit .env...
+        pause >nul
+    ) else (
+        echo    [WARNING] backend\.env.example tidak ditemukan!
+    )
+) else (
+    echo    [OK] backend\.env sudah ada.
+)
+
+if not exist "%FRONTEND%\.env" (
+    if exist "%FRONTEND%\.env.example" (
+        copy "%FRONTEND%\.env.example" "%FRONTEND%\.env" >nul
+        echo    [OK] frontend\.env dibuat dari .env.example
+    ) else (
+        echo    [WARNING] frontend\.env.example tidak ditemukan!
+    )
+) else (
+    echo    [OK] frontend\.env sudah ada.
+)
+
+echo.
+
+:: ------------------------------------------------------------
 ::  STEP 2: Install dependensi Backend
 :: ------------------------------------------------------------
 echo [2/5] Menginstall dependensi Backend...
