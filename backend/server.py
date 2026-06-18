@@ -25,10 +25,20 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+from local_db import AsyncIOMotorClientMock
+
 # MongoDB connection
-mongo_url = os.environ['MONGO_URL']
-mongo_client = AsyncIOMotorClient(mongo_url)
-db = mongo_client[os.environ['DB_NAME']]
+mongo_url = os.environ.get('MONGO_URL', '')
+PLACEHOLDER_URL = "mongodb+srv://admin:admin123@cluster0.hbu3ido.mongodb.net/?appName=Cluster0"
+
+if not mongo_url or mongo_url == PLACEHOLDER_URL:
+    logger.info("Using Local JSON Database for storage.")
+    mongo_client = AsyncIOMotorClientMock(ROOT_DIR)
+    db = mongo_client["sada_local"]
+else:
+    logger.info("Using MongoDB for storage.")
+    mongo_client = AsyncIOMotorClient(mongo_url)
+    db = mongo_client[os.environ.get('DB_NAME', 'sada')]
 
 # Model path – default looks two directories up (project root)
 MODEL_PATH = os.environ.get(
