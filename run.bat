@@ -191,7 +191,7 @@ set "BACKEND_HELPER=%ROOT%_start_backend.bat"
     echo @echo off
     echo cd /d "%BACKEND%"
     echo call .venv\Scripts\activate.bat
-    echo uvicorn server:app --host 127.0.0.1 --port %BACKEND_PORT% --reload
+    echo python -m uvicorn server:app --host 127.0.0.1 --port %BACKEND_PORT% --reload
 ) > "%BACKEND_HELPER%"
 
 :: Jalankan Backend di window terpisah
