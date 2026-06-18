@@ -29,9 +29,8 @@ from local_db import AsyncIOMotorClientMock
 
 # MongoDB connection
 mongo_url = os.environ.get('MONGO_URL', '')
-PLACEHOLDER_URL = "mongodb+srv://admin:admin123@cluster0.hbu3ido.mongodb.net/?appName=Cluster0"
 
-if not mongo_url or mongo_url == PLACEHOLDER_URL:
+if not mongo_url or "username:password" in mongo_url or "cluster.mongodb.net" in mongo_url:
     logger.info("Using Local JSON Database for storage.")
     mongo_client = AsyncIOMotorClientMock(ROOT_DIR)
     db = mongo_client["sada_local"]
