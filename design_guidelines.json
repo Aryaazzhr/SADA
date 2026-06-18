@@ -1,0 +1,108 @@
+{
+  "project_name": "SADA (Sistem Auditori Deteksi AI)",
+  "theme": "DARK",
+  "archetype": "Archetype 5: Jewel & Luxury - Deep Cinematic Tech",
+  "design_philosophy": "Glassmorphism aesthetic emphasizing depth through z-layering, ambient underlying glows, and frosted glass cards. Avoids generic AI 'slop' gradients by utilizing deep obsidian paired with cinematic crimson and emerald ambient lights. Bilingual-ready layout (ID/EN).",
+  "colors": {
+    "background_base": "#05050A",
+    "glow_primary": "#BE123C",
+    "glow_secondary": "#1D4ED8",
+    "surface_glass": "rgba(255, 255, 255, 0.03)",
+    "surface_glass_hover": "rgba(255, 255, 255, 0.06)",
+    "border_glass": "rgba(255, 255, 255, 0.08)",
+    "border_glass_highlight": "rgba(255, 255, 255, 0.15)",
+    "text_primary": "#FFFFFF",
+    "text_secondary": "#A1A1AA",
+    "status_human": "#10B981",
+    "status_ai": "#F43F5E",
+    "css_variables": {
+      "--background": "240 33% 3%",
+      "--glass-bg": "0 0% 100% 0.03",
+      "--glass-border": "0 0% 100% 0.08",
+      "--human-glow": "160 84% 39%",
+      "--ai-glow": "343 88% 60%"
+    }
+  },
+  "typography": {
+    "fonts": {
+      "heading": "Outfit, sans-serif",
+      "body": "Manrope, sans-serif"
+    },
+    "scale": {
+      "h1": "text-4xl sm:text-5xl lg:text-6xl tracking-tight font-light",
+      "h2": "text-2xl sm:text-3xl lg:text-4xl tracking-tight font-medium",
+      "h3": "text-xl sm:text-2xl font-medium",
+      "body": "text-base leading-relaxed text-zinc-300",
+      "label": "text-xs uppercase tracking-[0.2em] text-zinc-400 font-semibold"
+    },
+    "rules": "Avoid Inter/Roboto. Use fluid typography scales. Never center-align paragraphs. Use optical alignment for buttons with icons."
+  },
+  "glassmorphism_specs": {
+    "base_card": "backdrop-blur-xl bg-white/5 border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)] rounded-2xl",
+    "interactive_card": "backdrop-blur-xl bg-white/5 border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)] rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300",
+    "panel_highlight": "inset 0 1px 0 rgba(255,255,255,0.1)",
+    "ambient_background": "Place massive blurred colored divs (e.g., blur-[120px] opacity-20) absolutely positioned behind the glass cards to create the 'frosted over color' effect."
+  },
+  "components": {
+    "upload_zone": {
+      "layout": "Large rectangular area, generous padding (p-12), flex column, center aligned.",
+      "visuals": "Dashed border using border-white/20. Inside: Lucide UploadCloud icon (large), followed by H3 and body text instructions.",
+      "interactions": "drag-over state changes border to solid white/40 and background to bg-white/10. Add subtle scale animation on icon."
+    },
+    "record_button": {
+      "layout": "Circular, fixed size (h-20 w-20), flex center.",
+      "visuals": "Vibrant accent color background (bg-rose-600), inner shadow, white Lucide Mic icon.",
+      "interactions": "Idle: subtle glow shadow. Active (recording): strong animate-ping pseudo-element behind it to signify recording, and render animated audio wave bars."
+    },
+    "result_card": {
+      "layout": "Bento-style asymmetric grid (md:grid-cols-3 gap-6). Left column spanning 1 for the huge percentage score. Right column spanning 2 for breakdown.",
+      "visuals": "If Human: Subtle Emerald glow from behind. If AI: Subtle Rose glow. Massive text for percentage. Progress bars for confidence breakdown."
+    },
+    "stat_cards": {
+      "layout": "Grid items, p-6, flex flex-col justify-between.",
+      "visuals": "Label on top (text-xs uppercase). Huge metric number in middle (text-4xl font-light). Trend/icon on bottom. Glassmorphic base_card styling."
+    },
+    "history_list": {
+      "layout": "Flex column, gap-2.",
+      "visuals": "List items are sleek rows (p-4), border-b border-white/5, rounded-lg hover:bg-white/5. Left: filename + date. Right: Result pill badge (Human/AI).",
+      "interactions": "Group-hover effects to reveal a 'View Detail' icon on the far right."
+    },
+    "language_toggle": {
+      "layout": "Fixed in header top-right. Pill shape.",
+      "visuals": "Glassmorphic pill. Active language text is bright white, inactive is text-zinc-500. Smooth slide animation for the active indicator background."
+    }
+  },
+  "layout_and_spacing": {
+    "dashboard_grid": "grid-cols-1 md:grid-cols-4 lg:grid-cols-12 gap-6",
+    "bento_spans": "Use col-span-12 md:col-span-8 for main interactive areas, col-span-12 md:col-span-4 for sidebars/history.",
+    "padding": "Use generous padding. Containers should use p-6 or p-8. Page sections should use py-12 or py-20."
+  },
+  "micro_animations": {
+    "page_load": "Staggered fade-up for bento cards.",
+    "recording_pulse": "CSS animate-ping on an absolute inset-0 rounded-full div behind the mic button.",
+    "result_reveal": "Count-up animation for the confidence percentage."
+  },
+  "media_assets": {
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1644697131515-de8286392ec3?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwyfHxhdWRpbyUyMHdhdmUlMjBkYXJrJTIwZ3JhZGllbnR8ZW58MHx8fGJsYWNrfDE3NzgwMTMxODB8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Abstract wave of light, use as a low-opacity texture in the background (opacity-10)."
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1771873679764-4e5503b69040?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGRhcmslMjBnbG93aW5nJTIwbWVzaCUyMGJhY2tncm91bmR8ZW58MHx8fHwxNzc4MDEzMTgwfDA&ixlib=rb-4.1.0&q=85",
+        "description": "Dark glowing mesh, use as a subtle overlay or hero background image."
+      }
+    ]
+  },
+  "instructions_to_main_agent": [
+    "Theme: Strictly Dark Mode. Do not implement light mode.",
+    "Aesthetic: Glassmorphism. Use the 'glassmorphism_specs' strictly. Every major panel/card must be a frosted glass element over a deep, richly colored background.",
+    "Bilingual: Create a central state for language ('id' | 'en'). Use this state to render either Indonesian or English text strings across the UI. Keep it simple, no external i18n libraries required, just a dictionary object.",
+    "State Mocking: Since no ML model is provided, mock the detection process. On upload or record finish, show a 2-3 second loading state, then randomize a result (e.g., 85% AI or 92% Human) and update the history and stats.",
+    "Typography: Import 'Outfit' and 'Manrope' from Google Fonts. Apply them in Tailwind config. Do NOT use Inter, Roboto, or standard sans.",
+    "Background Depth: To make glassmorphism work, the background CANNOT be solid black. It must have depth. Use the provided media asset image as a fixed, low-opacity (10-20%) background, and place 2-3 massive absolute, blurred colored circles (e.g., bg-rose-600/20 blur-[120px]) behind the grid to create an ambient glow that shines through the glass cards.",
+    "Layout: Use a Bento Grid for the dashboard (e.g., Stats at the top, Upload/Record massive card on the left, History list on the right).",
+    "Testing: Add data-testid attributes to all interactive elements (buttons, inputs, toggle, file drop zone, etc.) for automated testing.",
+    "Icons: Use lucide-react exclusively. No emojis."
+  ]
+}
